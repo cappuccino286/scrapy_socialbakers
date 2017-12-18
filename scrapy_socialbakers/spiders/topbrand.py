@@ -19,11 +19,12 @@ class TopbrandSpider(scrapy.Spider):
     def parse_brand(self,response):
     	pos=response.meta['pos']
     	brand_name=response.meta['brand_name']
+        fans=response.css('.account-detail span.p-nw strong::text').extract_first().strip()
     	img_url=response.css('.account-detail div.img img::attr(src)').extract()
     	yield{
     		'pos':pos,
     		'brand_name':brand_name,
     		'url_page':response.css('.account-detail .account-list a.link-nw::attr(href)').extract_first(),
-    		'fans':response.css('.account-detail span.p-nw strong::text').extract_first().strip(),
+    		'fans':"".join(fans.split()),
     		'image_urls':img_url,
     	}
