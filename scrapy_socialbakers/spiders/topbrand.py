@@ -10,7 +10,7 @@ class TopbrandSpider(scrapy.Spider):
         brand = getattr(self, 'brand', '')
         if brand:
             brand= '/'+brand
-        self.start_urls = ['http://www.socialbakers.com/statistics/facebook/pages/total/%s/brands%/spage-1-5/' %(country,brand)]
+        self.start_urls = ['http://www.socialbakers.com/statistics/facebook/pages/total/%s/brands%s/page-1-5/' %(country,brand)]
 
     def parse(self, response):
         for brand in response.css("table.brand-table-list tr"):
