@@ -5,9 +5,12 @@ class TopbrandSpider(scrapy.Spider):
     name = 'topbrand'
     start_urls = ['/']
 
-    def __init__(self, country='france', brand='brands', *args, **kwargs):
+    def __init__(self, country='france', *args, **kwargs):
         super(TopbrandSpider, self).__init__(*args, **kwargs)
-        self.start_urls = ['http://www.socialbakers.com/statistics/facebook/pages/total/%s/%s/page-1-5/' % (country,brand)]
+        brand = getattr(self, 'brand', '')
+        if brand:
+            brand= '/'+brand
+        self.start_urls = ['http://www.socialbakers.com/statistics/facebook/pages/total/%s/brands%/spage-1-5/' %(country,brand)]
 
     def parse(self, response):
         for brand in response.css("table.brand-table-list tr"):
