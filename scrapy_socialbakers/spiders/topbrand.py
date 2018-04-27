@@ -38,6 +38,6 @@ class TopbrandSpider(scrapy.Spider):
     		'brand_name':brand_name,
     		'url_page':response.css('.account-detail .account-list a.link-nw::attr(href)').extract_first(),
     		'fans':"".join(fans.split()),
-			'tags':tags,
+		'tags':tags,
     		'image_urls':img_url
     	}
