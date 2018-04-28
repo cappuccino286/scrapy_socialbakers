@@ -17,7 +17,7 @@
 ```
 
 ## Spiders
-By default, this spider extract top 50 brands in France. However, it can receive argument "country" that extract top 50 brands in a country specific.
+By default, this spider extract top 50 brands in France. However, it can receive argument "country" and argument "brand" that extract top 50 brands in a country specific.
 
     $ scrapy crawl topbrand
     $ scrapy crawl topbrand -a country=vietnam
